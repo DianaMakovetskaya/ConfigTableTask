@@ -1,0 +1,36 @@
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.is-invalid{
+  border:1px red solid;
+}
+#selectBet,#createConfig{
+  height: 49px;
+  width: 130px;
+  border-radius: 9px;
+  background: #6F5DDE;
+  text-align: center;
+  color: white;
+}
+#createConfig{
+  width: 166px;
+}
+
+::ng-deep #selectBet .mat-form-field-underline {
+  display: none;
+}
+
+::ng-deep #selectBet .mat-select-value-text {
+  color: white!important;
+}
+::ng-deep #selectBet .mat-select-arrow{
+  color: white!important;
+}
+
+
+
+.mat-cell,.mat-header-cell {
+  justify-content: center;
+}
+

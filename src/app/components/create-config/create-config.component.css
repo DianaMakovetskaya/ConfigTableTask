@@ -1,0 +1,49 @@
+*{
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+  color: black;
+}
+input{
+ border-radius: 4px;
+  border: 1px solid #E0E0E0;
+  padding: 0.145rem;
+}
+
+#delete{
+  text-align: center;
+  border: 1px solid #C72B2B;
+  box-sizing: border-box;
+  border-radius: 9px;
+  color: #C72B2B;
+  width: 105.6px;
+  height: 30.89px;
+}
+
+
+.actions{
+  font-size: 11px;
+  line-height: 13px;
+}
+#submit{
+  background: #6F5DDE;
+  border-radius: 9px;
+  height: 35px;
+  width: 119px;
+  text-align: center;
+  color: white;
+}
+#cancel{
+  text-align: center;
+  width: 107px;
+  height: 35px;
+  background: #F3F3F3;
+  border: 0.8px solid #E7E5E5;
+  box-sizing: border-box;
+  border-radius: 9px;
+}
+
+::ng-deep .cdk-overlay-container {
+  z-index: 500 !important;
+}

@@ -1,0 +1,99 @@
+<div class="pt-12 pl-12">
+
+  <div class="flex justify-between">
+    <div> <button id="createConfig"   (click)="openDialog()">Create Config</button>
+
+      <mat-form-field class="ml-8" id="selectBet">
+        <mat-select (selectionChange)="selectChange()" [(value)]="selectedBet">
+          <mat-option value="bet1">Bet1</mat-option>
+          <mat-option value="bet2">Bet2</mat-option>
+        </mat-select>
+      </mat-form-field></div>
+  </div>
+
+  <div class="flex justify-end w-11/12">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+  <div class="mat-elevation-z8 w-11/12">
+
+    <mat-table  [dataSource]="dataSource" matSort class="mat-elevation-z8">
+      <ng-container matColumnDef="configName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Config Name</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.configName}} </mat-cell>
+      </ng-container>
+
+      <ng-container *ngIf="selectedBet === 'bet1'" matColumnDef="home">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Home </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-center"><input type="checkbox" [checked]="element.bet1.home" onclick="return false;"> </mat-cell>
+      </ng-container>
+
+      <ng-container *ngIf="selectedBet === 'bet1'" matColumnDef="favourite">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Favourite </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-center"><input type="checkbox" [checked]="element.bet1.favourite" onclick="return false;"> </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="sportsBook">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Sports book </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ selectedBet === 'bet1' ? element.bet1.sportsBook : element.bet2.sportsBook}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="preGame">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Pre Game </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-center"><input type="checkbox" onclick="return false;" [checked]="selectedBet === 'bet1' ? element.bet1.pregame : element.bet2.pregame"></mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="minGameTime">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Min Game Time </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ selectedBet === 'bet1' ? element.bet1.minGameTime : element.bet2.minGameTime }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="below">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>  Below </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ selectedBet === 'bet1' ? element.bet1.below : element.bet2.below}}  </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="above">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>  Above </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ selectedBet === 'bet1' ? element.bet1.above : element.bet2.above}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="percentage">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Percentage Change </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ selectedBet === 'bet1' ? element.bet1.percentageChange : element.bet2.percentageChange}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="referenceLine">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Reference Line </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.bet2.qualification.referenceLine}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="range">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Range </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.bet2.qualification.range}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="period">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Period </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.bet2.qualification.period}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="recoveryMargin">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Recovery Margin </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.bet2.recoveryMargin}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="rowClick(row)"></mat-row>
+    </mat-table>
+
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
+
+
+
+
+
